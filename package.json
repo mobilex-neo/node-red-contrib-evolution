@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-evolution-api",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Nós para integração com o Evolution API para automação de agentes de IA com WhatsApp e outros provedores.",
 	"keywords": [
 	  "mobilex",
