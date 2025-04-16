@@ -1,0 +1,60 @@
+<script type="text/x-red" data-template-name="instance-create">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Nome</label>
+        <input type="text" id="node-input-name" placeholder="Nome do nó">
+    </div>
+    <div class="form-row">
+        <label for="node-input-baseUrl"><i class="fa fa-globe"></i> Base URL</label>
+        <input type="text" id="node-input-baseUrl" placeholder="Base URL da API" value="https://evolution-api.com">
+    </div>
+    <div class="form-row">
+        <label for="node-input-instanceName"><i class="fa fa-cube"></i> Instance Name</label>
+        <input type="text" id="node-input-instanceName" placeholder="Nome da instância">
+    </div>
+    <div class="form-row">
+        <label for="node-input-includeQR"><i class="fa fa-qrcode"></i> Gerar QR Code?</label>
+        <input type="checkbox" id="node-input-includeQR" style="vertical-align:top;">
+    </div>
+    <div class="form-tips" style="color:#388e3c;">
+        <p>
+            Este nó cria uma instância no Evolution API.<br>
+            Insira a Base URL, o nome da instância e defina se deseja gerar um QR Code.
+        </p>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="instance-create">
+    <p>
+        O nó <strong>Instance Create</strong> chama o endpoint <code>/instance/create</code> do Evolution API.
+    </p>
+    <p>
+        Exemplo de payload enviado:
+    </p>
+    <pre><code>{
+  "instanceName": "MinhaInstancia",
+  "qrcode": true,
+  "integration": "WHATSAPP-BAILEYS"
+}</code></pre>
+    <p>
+        Utilize este nó para iniciar sua instância na plataforma Evolution.
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('instance-create', {
+        category: 'Evolution API',
+        color: "#66bb6a",
+        defaults: {
+            name: {value:""},
+            baseUrl: {value:"https://evolution-api.com"},
+            instanceName: {value:""},
+            includeQR: {value:false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-cubes",
+        label: function() {
+            return this.name || "Instance Create";
+        }
+    });
+</script>

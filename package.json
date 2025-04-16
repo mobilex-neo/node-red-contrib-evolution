@@ -1,0 +1,26 @@
+{
+	"name": "node-red-contrib-evolution-api",
+	"version": "1.0.0",
+	"description": "Nós para integração com o Evolution API para automação de agentes de IA com WhatsApp e outros provedores.",
+	"keywords": [
+	  "mobilex",
+	  "evolution api",
+	  "whatsapp",
+	  "chatbot",
+	  "ai",
+	  "automation"
+	],
+	"node-red": {
+	  "nodes": {
+		"instance-create": "nodes/instance-create/instance-create.js",
+		"send-text": "nodes/send-text/send-text.js",
+		"evolution-api": "nodes/evolution-api/evolution-api.js"
+	  }
+	},
+	"author": "Luiz Carvalho <dev@mobilex.tech>",
+	"license": "MIT",
+	"dependencies": {
+	  "axios": "^1.4.0"
+	}
+  }
+  

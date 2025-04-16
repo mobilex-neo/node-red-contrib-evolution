@@ -1,0 +1,170 @@
+<script type="text/x-red" data-template-name="evolution-api">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Nome</label>
+        <input type="text" id="node-input-name" placeholder="Nome do nó">
+    </div>
+    <div class="form-row">
+        <label for="node-input-baseUrl"><i class="fa fa-globe"></i> Base URL</label>
+        <input type="text" id="node-input-baseUrl" placeholder="https://evolution-api.com" value="https://evolution-api.com">
+    </div>
+    <div class="form-row">
+        <label for="node-input-globalApikey"><i class="fa fa-key"></i> Global API Key</label>
+        <input type="text" id="node-input-globalApikey" placeholder="(opcional)">
+    </div>
+    <div class="form-row">
+        <label for="node-input-operation"><i class="fa fa-cogs"></i> Operação</label>
+        <select id="node-input-operation">
+            <optgroup label="Instance">
+                <option value="instance_create">Create Instance</option>
+                <option value="instance_fetch">Fetch Instances</option>
+                <option value="instance_connect">Connect Instance</option>
+                <option value="instance_restart">Restart Instance</option>
+                <option value="instance_setPresence">Set Presence</option>
+                <option value="instance_connectionStatus">Connection Status</option>
+                <option value="instance_logout">Logout Instance</option>
+                <option value="instance_delete">Delete Instance</option>
+            </optgroup>
+            <optgroup label="Proxy">
+                <option value="proxy_set">Set Proxy</option>
+                <option value="proxy_find">Find Proxy</option>
+            </optgroup>
+            <optgroup label="Settings">
+                <option value="settings_set">Set Settings</option>
+                <option value="settings_find">Find Settings</option>
+            </optgroup>
+            <optgroup label="Send Message">
+                <option value="send_text">Send Text</option>
+                <option value="send_media_url">Send Media URL</option>
+                <option value="send_ptv">Send PTV</option>
+                <option value="send_narrated_audio">Send Narrated Audio</option>
+                <option value="send_status_stories">Send Status/Stories</option>
+                <option value="send_sticker">Send Sticker</option>
+                <option value="send_location">Send Location</option>
+                <option value="send_contact">Send Contact</option>
+                <option value="send_reaction">Send Reaction</option>
+                <option value="send_poll">Send Poll</option>
+                <option value="send_list">Send List</option>
+                <option value="send_button">Send Button</option>
+            </optgroup>
+            <optgroup label="Call">
+                <option value="call_fake">Fake Call</option>
+            </optgroup>
+            <optgroup label="Chat">
+                <option value="chat_check_whatsapp">Check WhatsApp Number</option>
+                <option value="chat_read_messages">Read Messages</option>
+                <option value="chat_archive">Archive Chat</option>
+                <option value="chat_mark_unread">Mark Chat Unread</option>
+                <option value="chat_delete_message">Delete Message</option>
+                <option value="chat_fetch_profile_picture">Fetch Profile Picture</option>
+                <option value="chat_get_base64_media">Get Base64 From Media Message</option>
+                <option value="chat_update_message">Update Message</option>
+                <option value="chat_send_presence">Send Presence (Chat)</option>
+                <option value="chat_update_block_status">Update Block Status</option>
+                <option value="chat_find_contacts">Find Contacts</option>
+                <option value="chat_find_messages">Find Messages</option>
+                <option value="chat_find_status_message">Find Status Message</option>
+                <option value="chat_find_chats">Find Chats</option>
+            </optgroup>
+            <optgroup label="Label">
+                <option value="label_find">Find Labels</option>
+                <option value="label_handle">Handle Label</option>
+            </optgroup>
+            <optgroup label="Profile Settings">
+                <option value="profile_fetch_business">Fetch Business Profile</option>
+                <option value="profile_fetch">Fetch Profile</option>
+                <option value="profile_update_name">Update Profile Name</option>
+                <option value="profile_update_status">Update Profile Status</option>
+                <option value="profile_update_picture">Update Profile Picture</option>
+                <option value="profile_remove_picture">Remove Profile Picture</option>
+                <option value="profile_fetch_privacy">Fetch Privacy Settings</option>
+                <option value="profile_update_privacy">Update Privacy Settings</option>
+            </optgroup>
+            <optgroup label="Group">
+                <option value="group_create">Create Group</option>
+                <option value="group_update_picture">Update Group Picture</option>
+                <option value="group_update_subject">Update Group Subject</option>
+                <option value="group_update_description">Update Group Description</option>
+                <option value="group_fetch_invite">Fetch Invite Code</option>
+                <option value="group_revoke_invite">Revoke Invite Code</option>
+                <option value="group_send_invite_url">Send Invite URL</option>
+                <option value="group_find_invite">Find Group by Invite Code</option>
+                <option value="group_find_by_jid">Find Group by JID</option>
+                <option value="group_fetch_all">Fetch All Groups</option>
+                <option value="group_find_participants">Find Participants</option>
+                <option value="group_update_participant">Update Participant</option>
+                <option value="group_update_setting">Update Group Setting</option>
+                <option value="group_toggle_ephemeral">Toggle Ephemeral</option>
+                <option value="group_leave">Leave Group</option>
+            </optgroup>
+            <optgroup label="Integrations">
+                <option value="websocket_set">Set Websocket</option>
+                <option value="websocket_find">Find Websocket</option>
+                <!-- Outros endpoints de integrações podem ser adicionados seguindo o mesmo padrão -->
+            </optgroup>
+            <optgroup label="Channel">
+                <option value="send_template">Send Template</option>
+                <option value="create_template">Create Template</option>
+                <option value="find_templates">Find Templates</option>
+            </optgroup>
+            <optgroup label="Storage">
+                <option value="s3_get_media">Get Media</option>
+                <option value="s3_get_media_url">Get Media URL</option>
+            </optgroup>
+            <optgroup label="Get Informations">
+                <option value="get_informations">Get Informations</option>
+            </optgroup>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-params"><i class="fa fa-code"></i> Parâmetros (JSON)</label>
+        <textarea id="node-input-params" style="height: 120px;" placeholder='Exemplo:
+{
+  "instance": "minhaInstancia123",
+  "number": "559999999999",
+  "text": "Olá, teste!"
+}'></textarea>
+    </div>
+    <div class="form-tips" style="color:#388e3c;">
+        <p>
+            O campo de parâmetros deve conter um JSON com os valores que serão usados para substituir os placeholders
+            na URL (ex.: <code>{{instance}}</code>) e para compor o corpo da requisição. Caso o método seja GET, os parâmetros não serão enviados no corpo.
+        </p>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="evolution-api">
+    <p>
+        O nó <strong>evolution‑api</strong> permite selecionar entre diversas operações do Evolution API (organizadas por categorias). A operação selecionada determinará o método HTTP e o endpoint a ser chamado.
+    </p>
+    <p>
+        Você deve configurar a URL base, a chave global de API (se necessária) e fornecer os parâmetros específicos da operação em JSON.
+    </p>
+    <p>
+        Exemplo de uso para enviar uma mensagem de texto:
+    </p>
+    <pre><code>{
+  "instance": "minhaInstancia123",
+  "number": "559999999999",
+  "text": "Olá, esta é uma mensagem de teste"
+}</code></pre>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('evolution-api', {
+        category: 'Evolution API',
+        color: "#66bb6a",
+        defaults: {
+            name: {value:""},
+            baseUrl: {value:"https://evolution-api.com"},
+            globalApikey: {value:""},
+            operation: {value:"instance_create"},
+            params: {value:""}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-cloud",
+        label: function() {
+            return this.name || "evolution-api";
+        }
+    });
+</script>

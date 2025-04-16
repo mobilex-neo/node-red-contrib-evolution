@@ -1,0 +1,64 @@
+<script type="text/x-red" data-template-name="send-text">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Nome</label>
+        <input type="text" id="node-input-name" placeholder="Nome do nó">
+    </div>
+    <div class="form-row">
+        <label for="node-input-baseUrl"><i class="fa fa-globe"></i> Base URL</label>
+        <input type="text" id="node-input-baseUrl" placeholder="Base URL da API" value="https://evolution-api.com">
+    </div>
+    <div class="form-row">
+        <label for="node-input-instance"><i class="fa fa-cube"></i> Instância</label>
+        <input type="text" id="node-input-instance" placeholder="Identificador da instância">
+    </div>
+    <div class="form-row">
+        <label for="node-input-number"><i class="fa fa-phone"></i> Número</label>
+        <input type="text" id="node-input-number" placeholder="Número do destinatário">
+    </div>
+    <div class="form-row">
+        <label for="node-input-text"><i class="fa fa-comment"></i> Texto</label>
+        <input type="text" id="node-input-text" placeholder="Texto da mensagem">
+    </div>
+    <div class="form-tips" style="color:#388e3c;">
+        <p>
+            Este nó envia uma mensagem de texto via Evolution API.<br>
+            Configure a instância, o número do destinatário e o texto da mensagem.
+        </p>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="send-text">
+    <p>
+        O nó <strong>Send Text Message</strong> realiza uma chamada para o endpoint <code>/message/sendText/{{instance}}</code> do Evolution API.
+    </p>
+    <p>
+        Exemplo de payload:
+    </p>
+    <pre><code>{
+  "number": "559999999999",
+  "text": "Mensagem de teste"
+}</code></pre>
+    <p>
+        Utilize este nó para enviar mensagens de texto para qualquer destinatário suportado.
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('send-text', {
+        category: 'Evolution API',
+        color: "#66bb6a",
+        defaults: {
+            name: {value:""},
+            baseUrl: {value:"https://evolution-api.com"},
+            instance: {value:""},
+            number: {value:""},
+            text: {value:""}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-comment",
+        label: function() {
+            return this.name || "Send Text Message";
+        }
+    });
+</script>
